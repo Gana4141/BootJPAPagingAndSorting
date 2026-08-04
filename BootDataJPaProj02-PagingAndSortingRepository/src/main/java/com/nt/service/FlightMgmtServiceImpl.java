@@ -66,6 +66,7 @@ public class FlightMgmtServiceImpl implements IFlightMgmtService {
 			page.forEach(System.out::println);
 			System.out.println("----------------------------");
 			System.out.println("===============================");
+			System.out.println("--------------------------------");
 		}
 	 	
 		
