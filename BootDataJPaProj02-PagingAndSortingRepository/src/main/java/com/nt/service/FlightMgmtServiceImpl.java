@@ -14,14 +14,14 @@ import com.nt.repository.IFlightDetailsRepository;
 public class FlightMgmtServiceImpl implements IFlightMgmtService {
 
     @Autowired
-	private  IFlightDetailsRepository  flightRepo;
+	private  IFlightDetailsRepository  flightRepository;
 
 	@Override
 	public Iterable<FlightDetails> showFlightsAsSorted(boolean ascOrder, String... props) {
 		//create the Sort object
 		Sort sort=Sort.by(ascOrder?Sort.Direction.ASC:Sort.Direction.DESC, props);
 		//  invoke the findAll(sort) method
-		Iterable<FlightDetails>  it=flightRepo.findAll(sort);
+		Iterable<FlightDetails>  it=flightRepository.findAll(sort);
 		return it;
 	}
 
@@ -30,7 +30,7 @@ public class FlightMgmtServiceImpl implements IFlightMgmtService {
 		//create Pageable object having inputs
 		Pageable pageable=PageRequest.of(pageno, pagesize);
 		//execute the code
-		Page<FlightDetails>  page=flightRepo.findAll(pageable);
+		Page<FlightDetails>  page=flightRepository.findAll(pageable);
 		return page;
 	}
 	
@@ -42,14 +42,14 @@ public class FlightMgmtServiceImpl implements IFlightMgmtService {
 		//create Pageable object having inputs
 		Pageable pageable=PageRequest.of(pageno, pagesize,sort);
 	   //invoke the method
-		 Page<FlightDetails> page=flightRepo.findAll(pageable);
+		 Page<FlightDetails> page=flightRepository.findAll(pageable);
 		return page;
 	}
 	
 	@Override
 	public void showFlightsByPagination(int pageSize) {
 		// get total  records
-		long count=flightRepo.count();
+		long count=flightRepository.count();
 		
 		//decide no.of pages
 		long pagesCount=count/pageSize;
@@ -61,12 +61,13 @@ public class FlightMgmtServiceImpl implements IFlightMgmtService {
 			//create Pageable object
 			Pageable pageable=PageRequest.of(i, pageSize);
 			//get each page 
-			Page<FlightDetails>  page=flightRepo.findAll(pageable);
+			Page<FlightDetails>  page=flightRepository.findAll(pageable);
 			System.out.println("records of page::  "+(page.getNumber()+1)+"/"+page.getTotalPages());
 			page.forEach(System.out::println);
 			System.out.println("----------------------------");
+			System.out.println("===============================");
 		}
-		
+	 	
 		
 	}
 

@@ -4,9 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BootDataJPaProj02CrudRepositoryApplication {
+public class BootDataJPaProj02CrudRepositoryApplication
+{
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		SpringApplication.run(BootDataJPaProj02CrudRepositoryApplication.class, args);
 	}
 
