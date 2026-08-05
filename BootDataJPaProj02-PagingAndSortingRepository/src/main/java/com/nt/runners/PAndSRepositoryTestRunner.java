@@ -61,6 +61,7 @@ public class PAndSRepositoryTestRunner implements CommandLineRunner {
 		
 		try {
 			flightService.showFlightsByPagination(2);
+			System.out.println("=================");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
